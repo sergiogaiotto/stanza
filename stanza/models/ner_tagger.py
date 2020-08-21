@@ -120,8 +120,7 @@ def train(args):
 
     if args['charlm']:
         if args['charlm_shorthand'] is None: 
-            logger.info("CharLM Shorthand is required for loading pretrained CharLM model...")
-            sys.exit(0)
+            raise ValueError("CharLM Shorthand is required for loading pretrained CharLM model...")
         logger.info('Use pretrained contextualized char embedding')
         args['charlm_forward_file'] = '{}/{}_forward_charlm.pt'.format(args['charlm_save_dir'], args['charlm_shorthand'])
         args['charlm_backward_file'] = '{}/{}_backward_charlm.pt'.format(args['charlm_save_dir'], args['charlm_shorthand'])
