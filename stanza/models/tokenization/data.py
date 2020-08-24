@@ -203,6 +203,7 @@ class DataLoader:
 
         convert = lambda t: (torch.from_numpy(np.array(t[0], dtype=t[1])))
 
+        # TODO: this is called many times at dev time during training and can be quite slow
         units, labels, features = list(map(convert, [(units, np.int64), (labels, np.int64), (features, np.float32)]))
 
         return units, labels, features, raw_units
